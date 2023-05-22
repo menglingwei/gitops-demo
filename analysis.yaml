@@ -4,21 +4,21 @@ metadata:
   name: success-rate
 spec:
   args:
-    - name: namespace
-      value: default
-    - name: service-name
-      value: rollouts-demo-stable
-    - name: rollouts-pod-template-hash
-      valueFrom:
-        podTemplateHashValue: Latest
+  - name: namespace
+    value: default
+  - name: service-name
+    value: rollouts-demo-stable
+  - name: rollouts-pod-template-hash
+    valueFrom:
+      podTemplateHashValue: Latest
   metrics:
-    - name: success-rate
-      interval: 10s
-      successCondition: "len(result) > 0 ? result[0] >= 0.9 : true"
-      provider:
-        prometheus:
-          address: http://arms-prom-server:9090
-          query: |
+  - name: success-rate
+    interval: 10s
+    successCondition: "len(result) > 0 ? result[0] >= 0.9 : true"
+    provider:
+      prometheus:
+        address: http://arms-prom-server:9090
+        query: |
             sum(
               rate(nginx_ingress_controller_requests{status=~"2.*",service=~"{{args.service-name}}"}[20s]))
               /
