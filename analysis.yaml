@@ -14,7 +14,7 @@ spec:
   metrics:
   - name: success-rate
     interval: 10s
-    successCondition: "len(result) > 0 ? result[0] >= 0.9 : true"
+    successCondition: result[0] >= 0.95
     provider:
       prometheus:
         address: http://arms-prom-server:9090
