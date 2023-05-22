@@ -6,19 +6,26 @@ spec:
   replicas: 1
   strategy:
     canary:
+      analysis:
+        templateName: success-rate
+        startingStep: 2
+        args:
+          - name: ingress
+            value: rollouts-demo-stable
       canaryService: rollouts-demo-canary
       stableService: rollouts-demo-stable
       trafficRouting:
         nginx:
           stableIngress: rollouts-demo-stable
       steps:
-      - setWeight: 10
-      - pause: {duration: 30}
       - setWeight: 20
-      - pause: {duration: 30}
+      - pause: {duration: 1m}
       - setWeight: 40
-      - pause: {duration: 30}
+      - pause: {duration: 10m}
+      - setWeight: 60
+      - pause: {duration: 1m}
       - setWeight: 80
+      - pause: {duration: 1m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
