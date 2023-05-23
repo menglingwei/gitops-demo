@@ -9,7 +9,7 @@ spec:
   - name: success-rate
     interval: 5m
     successCondition: result[0] >= 0.95
-    failureLimit: 5
+    #failureLimit: 5
     provider:
       prometheus:
         address: http://arms-prom-server.arms-prom.svc.cluster.local:9090
