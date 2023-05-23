@@ -4,13 +4,7 @@ metadata:
   name: success-rate
 spec:
   args:
-  - name: namespace
-    value: default
   - name: service-name
-    value: rollouts-demo-stable
-  - name: rollouts-pod-template-hash
-    valueFrom:
-      podTemplateHashValue: Latest
   metrics:
   - name: success-rate
     interval: 10s
