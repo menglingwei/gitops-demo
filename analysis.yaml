@@ -15,7 +15,7 @@ spec:
         address: http://arms-prom-server.arms-prom.svc.cluster.local:9090
         query: |
           sum(
-            irate(nginx_ingress_controller_requests{status=~"(1|2).*", canary!="" ,service="{{args.service-name}}"}[1m]))
+            irate(nginx_ingress_controller_requests{status=~"(1|2).*", canary!="" ,service="{{args.service-name}}"}[5m]))
             /
-            sum(irate(nginx_ingress_controller_requests{canary!="",service="{{args.service-name}}"}[1m])
+            sum(irate(nginx_ingress_controller_requests{canary!="",service="{{args.service-name}}"}[5m])
           )

@@ -27,7 +27,7 @@ spec:
         - pause: {duration: 3m}
         - setCanaryScale:
             weight: 80
-        - pause: {duration: 2m}
+        - pause: {duration: 5m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
