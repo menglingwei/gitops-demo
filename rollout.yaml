@@ -9,7 +9,7 @@ spec:
       analysis:
         templates:
         - templateName: success-rate
-        startingStep: 2
+        startingStep: 4
         args:
           - name: service-name
             value: rollouts-demo-stable
@@ -19,14 +19,13 @@ spec:
         nginx:
           stableIngress: rollouts-demo-stable
       steps:
-        - setWeight: 30
+        - setWeight: 10
         - setCanaryScale:
-            weight: 40
+            weight: 25
         - pause: {duration: 5m}
-        - setWeight: 50
-        - pause: {duration: 3m}
+        - setWeight: 33
         - setCanaryScale:
-            weight: 80
+            weight: 50
         - pause: {duration: 5m}
   revisionHistoryLimit: 2
   selector:
