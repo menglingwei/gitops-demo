@@ -19,15 +19,15 @@ spec:
         nginx:
           stableIngress: rollouts-demo-stable
       steps:
-        - setWeight: 10
+        - setWeight: 30
         - setCanaryScale:
-            weight: 25
-        - pause: {duration: 10m}
-        - setWeight: 33
-        - pause: {duration: 10m}
+            weight: 40
+        - pause: {duration: 20m}
+        - setWeight: 50
+        - pause: {duration: 30m}
         - setCanaryScale:
-            weight: 50
-        - pause: {duration: 5m}
+            weight: 80
+        - pause: {duration: 60m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:red
         ports:
         - name: http
           containerPort: 8080
