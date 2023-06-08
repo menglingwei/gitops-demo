@@ -21,13 +21,11 @@ spec:
       steps:
         - setWeight: 20
         - pause: {duration: 1m}
-        - setCanaryScale:
-            weight: 40
+        - setWeight: 40
         - pause: {duration: 5m}
         - setWeight: 60
         - pause: {duration: 5m}
-        - setCanaryScale:
-            weight: 80
+        - setWeight: 80
         - pause: {duration: 5m}
   revisionHistoryLimit: 2
   selector:
@@ -40,7 +38,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:yellow
         ports:
         - name: http
           containerPort: 8080
