@@ -20,7 +20,7 @@ spec:
           stableIngress: rollouts-demo-stable
       steps:
         - setWeight: 20
-        - pause: {duration: 5m}
+        - pause: {}
         - setWeight: 40
         - pause: {duration: 5m}
         - setWeight: 60
